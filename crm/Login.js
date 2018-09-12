@@ -1,7 +1,9 @@
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {MKTextField, MKColor, MKButton} from 'react-native-material-kit';
+import Loader from './Loader';
+import firebase from 'firebase';
 
 const LoginButton = MKButton.coloredButton()
     .withText('LOGIN')
@@ -26,10 +28,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
+    errorMessage: {
+      marginTop: 15,
+      fontSize: 15,
+      color: 'red',
+      alignSelf: 'center',
     },
 });
 
@@ -38,17 +41,53 @@ export default class Login extends Component<Props> {
   state = {
     email: '',
     password: '',
+    error:'',
+    loading: false,
   };
 
   onButtonPress() {
-    console.log('Clicked button!');
+    const { email, password } = this.state;
+    this.setState({ error: '', loading: true });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(this.onAuthSuccess.bind(this))
+      .catch (() => {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(this.onAuthSuccess.bind(this))
+          .catch(this.onAuthFailed.bind(this));
+      })
+    // console.log('Clicked button!');
+  }
+
+  onAuthSuccess() {
+    this.setState({
+      email: '',
+      password: '',
+      error:'',
+      loading: false,
+    });
+  }
+
+  onAuthFailed(){
+    this.setState({
+      error: 'Authentication Failed',
+      loading: false,
+    });
+  }
+
+  renderLoader() {
+    if(this.state.loading) {
+      return <Loader size="large"/>;
+    } else {
+      return <LoginButton onPress={this.onButtonPress.bind(this)} />
+      }
   }
 
   render() {
     const { form, fieldStyles, loginButtonArea, errorMessage, welcome, container } = styles;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome my crm app!</Text>
+      <View style={form}>
+        <Text>Login or Create and account</Text>
 
         <MKTextField
           text={this.state.email}
@@ -71,7 +110,7 @@ export default class Login extends Component<Props> {
         </Text>
 
         <View style={loginButtonArea}>
-          <LoginButton onPress={this.onButtonPress.bind(this)} />
+          {this.renderLoader()}
         </View>
 
       </View>

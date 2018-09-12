@@ -1,14 +1,14 @@
 # react_native_app
 CRM react native application for IOS
 
-## Installing Dependencies
+# Installing Dependencies
 brew install node
 brew install watchman
 
-## create project
+# create project
 react-native init crm
 
-##run project
+# run project
 cd crm
 react-native run-ios
 or
@@ -19,7 +19,7 @@ cd /Users/computer/projects/react_native_app/crm
 Have an Android emulator running (quickest way to get started), or a device connected
 react-native run-android
 
-##run eject to include libraries that require require-native link
+# run eject to include libraries that require require-native link
 https://github.com/react-community/create-react-native-app/blob/master/EJECTING.md#react-native-link
 cd crm
 add eject to package.json
@@ -30,15 +30,15 @@ npm install --save react-native-material-kit
 npm install --save react-native-vector-icons
 
 
-## firebase setup (setup login and database)
+# firebase setup (setup login and database)
 npm install --save firebase
 
-##if encountering errors after installation of dependencies
+# if encountering errors after installation of dependencies
 react-native run-ios
 or
 npm install
 
-## alternate way to re-link dependencies
+# alternate way to re-link dependencies
 npm install rnpm -g
 https://github.com/react-community/create-react-native-app/blob/master/EJECTING.md
 rnpm link react-native-material-kit

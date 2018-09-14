@@ -61,3 +61,6 @@ $ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
 # Icons
 $ npm install react-native-vector-icons --save
 https://github.com/oblador/react-native-vector-icons
+
+# Navigation
+$ npm install --save react-navigation

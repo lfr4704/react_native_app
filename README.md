@@ -11,7 +11,7 @@ This is a sample CRM react native application for IOS
 # run project
 `$ cd crm`  
 `$ react-native run-ios`  
-or
+or  
 Open ios/crm.xcodeproj in Xcode  
 Hit the Run button  
 To run your app on Android:  

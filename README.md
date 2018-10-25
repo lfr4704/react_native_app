@@ -2,7 +2,7 @@
 This is a sample CRM react native application for IOS
 
 # Installing Dependencies
-`$ brew install node`&nbsp;
+`$ brew install node`&nbsp;  
 `$ brew install watchman`
 
 # create project

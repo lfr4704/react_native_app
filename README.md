@@ -1,8 +1,8 @@
 # react_native_app
-`$ CRM react native application for IOS`
+This is a sample CRM react native application for IOS
 
 # Installing Dependencies
-`$ brew install node`
+`$ brew install node`&nbsp;
 `$ brew install watchman`
 
 # create project

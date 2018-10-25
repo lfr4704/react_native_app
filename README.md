@@ -1,9 +1,9 @@
 # react_native_app
-$ CRM react native application for IOS
+`$ CRM react native application for IOS`
 
 # Installing Dependencies
-$ brew install node&nbsp;
-$ brew install watchman
+`$ brew install node`
+`$ brew install watchman`
 
 # create project
 $ react-native init crm

@@ -11,10 +11,19 @@ import {StyleSheet, Text, View} from 'react-native';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Login from './Login';
-import Loader from './Loader';
-import PeopleList from './PeopleList';
-import reducers from '../reducers/PeopleReducer';
+import Login from './components/Login';
+import Loader from './components/Loader';
+import Navigation from './components/Navigation';
+import reducers from './reducers/PeopleReducer';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+});
 
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -43,7 +52,7 @@ export default class App extends Component<Props> {
     renderInitialView() {
       switch (this.state.loggedIn) {
         case true:
-          return <PeopleList />
+          return <Navigation />
         case false:
           return <Login />;
         default:
@@ -61,12 +70,3 @@ export default class App extends Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});

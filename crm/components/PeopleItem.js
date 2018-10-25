@@ -42,7 +42,8 @@ const PeopleItem = (props) => {
       <Icon
         name={'user'}
         size={100}
-        style={styles.icon}/>
+        style={styles.icon}
+      />
       <Text style={[theme.cardtTitleStyle, styles.title]}>{props.people.first_name} {props.people.last_name}</Text>
       <Text style={[theme.cardActionStyle, styles.action]}>{props.people.company}</Text>
     </View>
